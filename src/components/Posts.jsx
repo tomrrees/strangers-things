@@ -1,4 +1,5 @@
 import { fetchAllPosts } from "api/post";
+import { Post } from "components";
 import React, { useEffect, useState } from "react";
 
 export default function Posts() {
@@ -19,7 +20,11 @@ export default function Posts() {
   return (
     <div>
       {postList.map((post, index) => {
-        return <div>{post.location}</div>;
+        return (
+          <div>
+            <Post key={post.id} post={post} />
+          </div>
+        );
       })}
     </div>
   );
