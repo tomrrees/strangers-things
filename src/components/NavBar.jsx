@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 export default function NavBar() {
   return (
     <div>
-      {/* <nav>
+      <nav>
         <Link to="/">Posts</Link>
-        <Link to="/post">Post</Link>
+        {/* <Link to="/post">Post</Link> */}
         <Link to="/profile">Profile</Link>
         <Link to="/logout">Log Out</Link>
-      </nav> */}
+        <Link to="/register">Register</Link>
+      </nav>
     </div>
   );
 }

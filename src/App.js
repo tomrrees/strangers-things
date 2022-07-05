@@ -1,4 +1,4 @@
-import { Profile, Posts, NavBar, LogOut, Post } from "components";
+import { Profile, Posts, NavBar, LogOut, Post, Register } from "components";
 import { Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -10,6 +10,7 @@ export default function App() {
         <Route path="/" element={<Posts />} />
         <Route path="/logout" element={<LogOut />} />
         {/* <Route path="/post" element={<Post />} /> */}
+        <Route path="/register" element={<Register />} />
       </Routes>
     </div>
   );
