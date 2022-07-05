@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { loginUser } from "api/user";
 
-export default function Login() {
-  const [token, setToken] = useState("");
-
-  function logIn(username, password) {}
+export default function Login({ setToken }) {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
   function logOut() {
     localStorage.setItem("token", null);
@@ -13,26 +13,27 @@ export default function Login() {
     <div>
       <form
         onSubmit={async (e) => {
-          //   if (password === confirmPassword) {
-          //     e.preventDefault();
-          //     const result = await createUser(userName, password);
-          //     console.log(result.data);
-          //     setToken(result.data.token);
-          //     localStorage.setItem("token", token);
-          //     console.log(result.data.token);
-          //   }
+          e.preventDefault();
+          const result = await loginUser(userName, password);
+          console.log(result.data);
+          setToken(result.data.token);
+          localStorage.setItem("token", result.data.token);
+          console.log(result.data.token);
         }}
       >
         <input
+          placeholder="Username"
           value={userName}
           required={true}
           onChange={(e) => setUserName(e.target.value)}
         />
         <input
+          placeholder="Password"
           value={password}
           required={true}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

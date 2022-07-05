@@ -10,6 +10,7 @@ export default function NavBar() {
         <Link to="/profile">Profile</Link>
         <Link to="/logout">Log Out</Link>
         <Link to="/register">Register</Link>
+        <Link to="/login">Log In</Link>
       </nav>
     </div>
   );
