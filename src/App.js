@@ -9,7 +9,7 @@ export default function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/" element={<Posts />} />
         <Route path="/logout" element={<LogOut />} />
-        <Route path="/Post" element={<Post />} />
+        <Route path="/post" element={<Post />} />
       </Routes>
     </div>
   );
