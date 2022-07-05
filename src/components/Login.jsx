@@ -16,8 +16,13 @@ export default function Login({ setToken }) {
           e.preventDefault();
           const result = await loginUser(userName, password);
           console.log(result.data);
-          setToken(result.data.token);
-          localStorage.setItem("token", result.data.token);
+          if (result.success === false) {
+            alert(result.error.message);
+          } else {
+            setToken(result.data.token);
+            localStorage.setItem("token", result.data.token);
+            alert(result.data.message);
+          }
           console.log(result.data.token);
         }}
       >

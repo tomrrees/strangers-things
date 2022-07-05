@@ -11,6 +11,7 @@ export default function NavBar() {
         <Link to="/logout">Log Out</Link>
         <Link to="/register">Register</Link>
         <Link to="/login">Log In</Link>
+        <Link to="/createpost">Create Post</Link>
       </nav>
     </div>
   );

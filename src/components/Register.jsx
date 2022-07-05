@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../api/user";
 
-export default function Register() {
+export default function Register({ setToken }) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [token, setToken] = useState("");
 
   return (
     <div>
@@ -17,7 +16,7 @@ export default function Register() {
             const result = await createUser(userName, password);
             console.log(result.data);
             setToken(result.data.token);
-            localStorage.setItem("token", token);
+            localStorage.setItem("token", result.data.token);
             console.log(result.data.token);
           } else {
             if (password !== confirmPassword) {

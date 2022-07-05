@@ -1,4 +1,12 @@
-import { Profile, Posts, NavBar, LogOut, Post, Register } from "components";
+import {
+  Profile,
+  Posts,
+  NavBar,
+  LogOut,
+  Post,
+  Register,
+  CreatePost,
+} from "components";
 import Login from "components/Login";
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -8,9 +16,9 @@ export default function App() {
   const [token, setToken] = useState("");
   const [currentUser, setCurrentUser] = useState({});
 
-  useEffect(() => {
-    const localStorageToken = localStorage.getItem("token");
+  const localStorageToken = localStorage.getItem("token");
 
+  useEffect(() => {
     async function getMe() {
       const result = await fetchMe(localStorageToken);
       setCurrentUser(result.data);
@@ -21,16 +29,36 @@ export default function App() {
     }
   }, [token]);
 
+  // useEffect(() => {
+  //   console.log("token = ", token);
+  //   setToken("");
+  //   console.log("token = ", token);
+  //   console.log("user = ", currentUser);
+  //   setCurrentUser({});
+  //   console.log("user = ", currentUser);
+  // }, [localStorageToken]);
+
   return (
     <div>
       <NavBar />
       <Routes>
         <Route path="/profile" element={<Profile />} />
         <Route path="/" element={<Posts />} />
-        <Route path="/logout" element={<LogOut />} />
+        <Route
+          path="/logout"
+          element={
+            <LogOut
+              setToken={setToken}
+              setCurrentUser={setCurrentUser}
+              token={token}
+              currentUser={currentUser}
+            />
+          }
+        />
         {/* <Route path="/post" element={<Post />} /> */}
         <Route path="/register" element={<Register setToken={setToken} />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/createpost" element={<CreatePost token={token} />} />
       </Routes>
     </div>
   );
