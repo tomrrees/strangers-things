@@ -15,6 +15,7 @@ export default function Post({ post }) {
             ? "Available upon request."
             : post.location}
         </li>
+        <li>Will Deliver: {post.willDeliver ? "Yes" : "No"}</li>
       </ul>
     </div>
   );
