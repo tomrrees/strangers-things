@@ -13,7 +13,7 @@ export default function Posts({ token, postList, setPostList }) {
     };
     getAllPosts();
     console.log("postlist rendering");
-  }, [postList]);
+  }, []);
 
   console.log("postList:", postList);
 
@@ -31,7 +31,7 @@ export default function Posts({ token, postList, setPostList }) {
         </div>
       );
     });
-  }, [postList]);
+  }, []);
 
   return (
     <div>
