@@ -6,6 +6,7 @@ import {
   Post,
   Register,
   CreatePost,
+  EditPost,
 } from "components";
 import Login from "components/Login";
 import { Routes, Route } from "react-router-dom";

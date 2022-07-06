@@ -1,5 +1,5 @@
 import { fetchAllPosts } from "api/post";
-import { Post, CreatePost } from "components";
+import { Post, CreatePost, EditPost } from "components";
 import React, { useEffect, useState } from "react";
 
 export default function Posts({ token, postList, setPostList }) {
@@ -12,18 +12,40 @@ export default function Posts({ token, postList, setPostList }) {
       setPostList(results.data.posts);
     };
     getAllPosts();
-    //console.log(postList.data.posts);
-  }, []);
+    console.log("postlist rendering");
+  }, [postList]);
 
   console.log("postList:", postList);
+
+  useEffect(() => {
+    postList.map((post) => {
+      return (
+        <div>
+          <Post
+            key={post.id}
+            token={token}
+            post={post}
+            postList={postList}
+            setPostList={setPostList}
+          />
+        </div>
+      );
+    });
+  }, [postList]);
 
   return (
     <div>
       <CreatePost postList={postList} setPostList={setPostList} token={token} />
-      {postList.map((post, index) => {
+      {postList.map((post) => {
         return (
           <div>
-            <Post key={post.id} post={post} />
+            <Post
+              key={post.id}
+              token={token}
+              post={post}
+              postList={postList}
+              setPostList={setPostList}
+            />
           </div>
         );
       })}

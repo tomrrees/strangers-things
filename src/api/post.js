@@ -45,3 +45,47 @@ export const createPost = async (
   console.log(result);
   return result;
 };
+
+export const deletePost = async (token, post) => {
+  const id = post._id;
+  const response = await fetch(`${url}/posts/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    // .then((response) => response.json())
+    // .then((result) => {
+    //   console.log(result);
+    //   return result;
+    // })
+    .catch(console.error);
+  const result = await response.json();
+  console.log(result);
+  return result;
+};
+
+export const editPost = async (
+  token,
+  { title, description, price, willDeliver, id }
+) => {
+  const response = await fetch(`${url}/posts/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      post: {
+        title,
+        description,
+        price,
+        willDeliver,
+      },
+    }),
+  }).catch(console.error);
+  const result = await response.json();
+  console.log(result);
+  return result;
+};
