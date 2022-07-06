@@ -1,13 +1,13 @@
 import { fetchAllPosts } from "api/post";
-import { Post } from "components";
+import { Post, CreatePost } from "components";
 import React, { useEffect, useState } from "react";
 
-export default function Posts() {
-  const [postList, setPostList] = useState([]);
+export default function Posts({ token, postList, setPostList }) {
+  // const [postList, setPostList] = useState([]);
 
   useEffect(() => {
     const getAllPosts = async () => {
-      const results = await fetchAllPosts();
+      const results = await fetchAllPosts(token);
       console.log("results:", results);
       setPostList(results.data.posts);
     };
@@ -19,6 +19,7 @@ export default function Posts() {
 
   return (
     <div>
+      <CreatePost postList={postList} setPostList={setPostList} token={token} />
       {postList.map((post, index) => {
         return (
           <div>

@@ -16,6 +16,7 @@ export default function Post({ post }) {
             : post.location}
         </li>
         <li>Will Deliver: {post.willDeliver ? "Yes" : "No"}</li>
+        <li>Messages: {post.isAuthor ? post.messages : "No messages."}</li>
       </ul>
     </div>
   );

@@ -1,7 +1,7 @@
 import { createPost } from "api/post";
 import React, { useState } from "react";
 
-export default function CreatePost({ token }) {
+export default function CreatePost({ token, postList, setPostList }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -21,8 +21,15 @@ export default function CreatePost({ token }) {
           willDeliver,
         });
 
-        if (result) alert("Posted successfully");
-        console.log(result);
+        if (result.success) alert("Posted successfully");
+        if (!token) alert("You must be logged in to create a post!");
+
+        const newPost = [result.data.post];
+        console.log("new post:", newPost);
+        console.log("post list:", postList);
+        const newList = postList.concat(newPost);
+
+        setPostList(newList);
       }}
     >
       <input
@@ -55,7 +62,9 @@ export default function CreatePost({ token }) {
         required={false}
         onChange={(e) => setWillDeliver(e.target.value)}
       />
-      <button type="submit">Submit Post</button>
+      <button type="submit" disabled={token === null ? true : false}>
+        Submit Post
+      </button>
     </form>
   );
 }
