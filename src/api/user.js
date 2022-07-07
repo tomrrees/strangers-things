@@ -19,7 +19,7 @@ export const createUser = async (username, password) => {
     // })
     .catch(console.error);
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   return result;
 };
 
@@ -42,7 +42,7 @@ export const loginUser = async (username, password) => {
     // })
     .catch(console.error);
   const result = await response.json();
-  console.log("result of login:", result);
+  // console.log("result of login:", result);
   return result;
 };
 

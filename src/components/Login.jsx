@@ -15,7 +15,7 @@ export default function Login({ setToken }) {
         onSubmit={async (e) => {
           e.preventDefault();
           const result = await loginUser(userName, password);
-          console.log(result.data);
+          // console.log(result.data);
           if (result.success === false) {
             alert(result.error.message);
           } else {
@@ -23,7 +23,7 @@ export default function Login({ setToken }) {
             localStorage.setItem("token", result.data.token);
             alert(result.data.message);
           }
-          console.log(result.data.token);
+          // console.log(result.data.token);
         }}
       >
         <input

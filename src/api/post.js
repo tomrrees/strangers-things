@@ -43,7 +43,7 @@ export const createPost = async (
     // })
     .catch(console.error);
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   return result;
 };
 
@@ -63,7 +63,7 @@ export const deletePost = async (token, post) => {
     // })
     .catch(console.error);
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   return result;
 };
 
@@ -88,7 +88,7 @@ export const editPost = async (
     }),
   }).catch(console.error);
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   return result;
 };
 
@@ -106,6 +106,6 @@ export const sendMessage = async (token, content, id) => {
     }),
   }).catch(console.error);
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   return result;
 };

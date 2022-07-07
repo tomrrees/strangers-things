@@ -5,7 +5,7 @@ import EditPost from "./EditPost";
 import SendMessage from "./SendMessage";
 
 export default function Post({ token, post, postList, setPostList }) {
-  console.log("Post inside of the post component: ", post);
+  // console.log("Post inside of the post component: ", post);
   return (
     <div>
       <ul>

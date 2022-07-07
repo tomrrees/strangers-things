@@ -13,7 +13,7 @@ export default function SendMessage({ token, post }) {
 
           const result = await sendMessage(token, message, id);
           //   const currentMessage = await result.json();
-          console.log("result of message:", result);
+          //   console.log("result of message:", result);
           if (result.success) {
             alert(result);
           }

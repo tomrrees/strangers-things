@@ -44,7 +44,7 @@ export default function App() {
     <div>
       <NavBar />
       <Routes>
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile token={token} />} />
         <Route
           path="/"
           element={

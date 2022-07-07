@@ -1,9 +1,11 @@
 import { fetchAllPosts } from "api/post";
+import { fetchMe } from "api/user";
 import { Post, CreatePost, EditPost } from "components";
 import React, { useEffect, useState } from "react";
 
 export default function Posts({ token, postList, setPostList }) {
   // const [postList, setPostList] = useState([]);
+  const me = fetchMe();
 
   useEffect(() => {
     const getAllPosts = async () => {
