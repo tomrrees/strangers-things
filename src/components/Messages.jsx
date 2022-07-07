@@ -17,12 +17,25 @@ export default function Messages({ token, post }) {
   //   // return <div>No Messages.</div>;
   // }
   console.log(messageList);
+
+  function displayMessageList() {
+    if (messageList.length > 0) {
+      messageList.map((message) => {
+        return <li>{message}</li>;
+      });
+    } else {
+      return <li>No messages</li>;
+    }
+    console.log(messageList);
+  }
+
   return (
     <div>
+      Messages:
       <ul>
         {messageList.length > 0 ? (
           messageList.map((message) => {
-            return <li>{message}</li>;
+            return <li>{message.content}</li>;
           })
         ) : (
           <li>No messages</li>

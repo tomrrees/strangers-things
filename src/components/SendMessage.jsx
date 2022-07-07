@@ -26,8 +26,8 @@ export default function SendMessage({ token, post }) {
           required={true}
           onChange={(e) => setMessage(e.target.value)}
         />
+        <button type="submit">Submit Message</button>
       </form>
-      <button type="submit">Submit Message</button>
     </div>
   );
 }
