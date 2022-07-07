@@ -14,7 +14,7 @@ export default function Posts({ token, postList, setPostList }) {
     const getAllPosts = async () => {
       const results = await fetchAllPosts(token);
       setPostList(results.data.posts);
-      setPostsToDisplay(searchTerm.length ? filteredPosts : postList);
+      setPostsToDisplay(searchTerm.length > 0 ? filteredPosts : postList);
       //setPostsToDisplay(postList);
       console.log(postsToDisplay);
     };
@@ -29,6 +29,7 @@ export default function Posts({ token, postList, setPostList }) {
       ? post.location.toLowerCase()
       : "available on request";
     let willDeliver = post.willDeliver ? "yes" : "no";
+    const username = post.author.username.toLowerCase();
     if (title.includes(text.toLowerCase())) return true;
     if (price.includes(text.toLowerCase())) return true;
     if (description.includes(text.toLowerCase())) return true;
@@ -37,6 +38,7 @@ export default function Posts({ token, postList, setPostList }) {
     }
     if (location.includes(text.toLowerCase())) return true;
     if (willDeliver.includes(text.toLowerCase())) return true;
+    if (username.includes(text.toLowerCase())) return true;
     else return false;
   }
 
@@ -62,7 +64,7 @@ export default function Posts({ token, postList, setPostList }) {
           required={false}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <button type="submit">Search</button>
       </form>
       {postsToDisplay.map((post) => {
         return (

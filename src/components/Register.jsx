@@ -6,18 +6,25 @@ export default function Register({ setToken }) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  let navigate = useNavigate();
 
   return (
     <div>
       <form
         onSubmit={async (e) => {
-          if (password === confirmPassword && password.length > 8) {
-            e.preventDefault();
+          e.preventDefault();
+          if (password === confirmPassword && password.length >= 8) {
             const result = await createUser(userName, password);
-            console.log(result.data);
-            setToken(result.data.token);
-            localStorage.setItem("token", result.data.token);
-            console.log(result.data.token);
+            if (result.success) {
+              console.log(result.data);
+              setToken(result.data.token);
+              localStorage.setItem("token", result.data.token);
+              console.log(result.data.token);
+              alert("Account created");
+              navigate("/login");
+            } else {
+              alert("Account not created");
+            }
           } else {
             if (password !== confirmPassword) {
               alert(`Passwords do not match.`);

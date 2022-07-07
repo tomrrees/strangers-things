@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { loginUser } from "api/user";
+import { useNavigate } from "react-router-dom";
 
 export default function Login({ setToken }) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  let navigate = useNavigate();
 
   function logOut() {
     localStorage.setItem("token", null);
@@ -22,6 +24,7 @@ export default function Login({ setToken }) {
             setToken(result.data.token);
             localStorage.setItem("token", result.data.token);
             alert(result.data.message);
+            navigate("/");
           }
           // console.log(result.data.token);
         }}
