@@ -15,7 +15,7 @@ export const fetchAllPosts = async (token) => {
 
 export const createPost = async (
   token,
-  { title, description, price, willDeliver }
+  { title, description, price, location, willDeliver }
 ) => {
   const response = await fetch(`${url}/posts`, {
     method: "POST",
@@ -32,6 +32,7 @@ export const createPost = async (
         title,
         description,
         price,
+        location,
         willDeliver,
       },
     }),
@@ -68,7 +69,7 @@ export const deletePost = async (token, post) => {
 
 export const editPost = async (
   token,
-  { title, description, price, willDeliver, id }
+  { title, description, price, location, willDeliver, id }
 ) => {
   const response = await fetch(`${url}/posts/${id}`, {
     method: "PATCH",
@@ -81,7 +82,26 @@ export const editPost = async (
         title,
         description,
         price,
+        location,
         willDeliver,
+      },
+    }),
+  }).catch(console.error);
+  const result = await response.json();
+  console.log(result);
+  return result;
+};
+
+export const sendMessage = async (token, content, id) => {
+  const response = await fetch(`${url}/posts/${id}/messages`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      message: {
+        content,
       },
     }),
   }).catch(console.error);

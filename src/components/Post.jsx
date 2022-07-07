@@ -2,6 +2,7 @@ import React from "react";
 import DeletePost from "./DeletePost";
 import Messages from "./Messages";
 import EditPost from "./EditPost";
+import SendMessage from "./SendMessage";
 
 export default function Post({ token, post, postList, setPostList }) {
   console.log("Post inside of the post component: ", post);
@@ -38,6 +39,8 @@ export default function Post({ token, post, postList, setPostList }) {
           setPostList={setPostList}
         />
       ) : null}
+
+      {!post.isAuthor ? <SendMessage token={token} post={post} /> : null}
     </div>
   );
 }

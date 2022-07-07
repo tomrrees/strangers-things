@@ -17,21 +17,21 @@ export default function Posts({ token, postList, setPostList }) {
 
   console.log("postList:", postList);
 
-  useEffect(() => {
-    postList.map((post) => {
-      return (
-        <div>
-          <Post
-            key={post.id}
-            token={token}
-            post={post}
-            postList={postList}
-            setPostList={setPostList}
-          />
-        </div>
-      );
-    });
-  }, []);
+  // useEffect(() => {
+  //   postList.map((post) => {
+  //     return (
+  //       <div>
+  //         <Post
+  //           key={post.id}
+  //           token={token}
+  //           post={post}
+  //           postList={postList}
+  //           setPostList={setPostList}
+  //         />
+  //       </div>
+  //     );
+  //   });
+  // }, []);
 
   return (
     <div>
