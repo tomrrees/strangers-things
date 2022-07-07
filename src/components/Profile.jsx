@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Post } from "components";
 import { fetchMe } from "api/user";
 
-export default function Profile({ token }) {
+export default function Profile({ token, postList, setPostList }) {
   // let posts = [];
   // let messages = [];
   // const me = fetchMe(token);
@@ -17,43 +18,68 @@ export default function Profile({ token }) {
   const [posts, setPosts] = useState([]);
   const [messages, setMessages] = useState([]);
 
-  useEffect(async () => {
+  useEffect(() => {
     // let posts = [];
     // let messages = [];
-    const me = await fetchMe(token);
+    // const me = await fetchMe(token);
 
-    console.log("me data:", me);
+    // console.log("me data:", me);
 
-    if (me.success) {
-      const tempPosts = me.value.data.posts;
-      const tempMessages = me.value.data.messages;
-      console.log("Temp Posts:", tempPosts);
-      console.log("Temp Messages:", tempMessages);
-      setPosts(tempPosts);
-      setMessages(tempMessages);
-    } else {
-      console.log("error in me:", me);
-    }
-    return me;
+    // if (me.success) {
+    //   const tempPosts = me.value.data.posts;
+    //   const tempMessages = me.value.data.messages;
+    //   console.log("Temp Posts:", tempPosts);
+    //   console.log("Temp Messages:", tempMessages);
+    //   setPosts(tempPosts);
+    //   setMessages(tempMessages);
+    // } else {
+    //   console.log("error in me:", me);
+    // }
+    // return me;
+    const getMyData = async () => {
+      const result = await fetchMe(token);
+      console.log("me:", result);
+      console.log(result.data);
+      // try {
+      //   tempPosts = result.data.posts;
+      //   tempMessages = result.data.messages;
+      // } catch (error) {
+      //   console.log(error);
+      // }
+      if (result.success) {
+        const tempPosts = result.data.posts;
+        const tempMessages = result.data.messages;
+        console.log("Temp Posts:", tempPosts);
+        console.log("Temp Messages:", tempMessages);
+        setPosts(tempPosts);
+        setMessages(tempMessages);
+      } else {
+        console.log("error in me:", result);
+      }
+    };
+    getMyData();
   }, []);
-
-  // try {
-  //   posts = me.value.data.posts;
-  //   messages = me.value.data.messages;
-  // } catch (error) {
-  //   console.log(error);
-  // }
 
   return (
     <div>
       <div>
         {posts.map((post) => {
-          return <div>{post}</div>;
+          return (
+            <div>
+              <Post
+                key={post.id}
+                token={token}
+                post={post}
+                postList={postList}
+                setPostList={setPostList}
+              />
+            </div>
+          );
         })}
       </div>
       <div>
         {messages.map((message) => {
-          return <div>{message}</div>;
+          return <div>{message.content}</div>;
         })}
       </div>
     </div>

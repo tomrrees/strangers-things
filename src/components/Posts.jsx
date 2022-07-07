@@ -6,39 +6,65 @@ import React, { useEffect, useState } from "react";
 export default function Posts({ token, postList, setPostList }) {
   // const [postList, setPostList] = useState([]);
   const me = fetchMe();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [postsToDisplay, setPostsToDisplay] = useState([]);
 
   useEffect(() => {
     const getAllPosts = async () => {
       const results = await fetchAllPosts(token);
-      console.log("results:", results);
       setPostList(results.data.posts);
+      setPostsToDisplay(searchTerm.length ? filteredPosts : postList);
+      //setPostsToDisplay(postList);
+      console.log(postsToDisplay);
     };
     getAllPosts();
-    console.log("postlist rendering");
-  }, []);
+  }, [filteredPosts]);
 
-  console.log("postList:", postList);
+  function checkPost(post, text) {
+    const title = post.title.toLowerCase();
+    const price = post.price.toLowerCase();
+    const description = post.description.toLowerCase();
+    let location = post.location
+      ? post.location.toLowerCase()
+      : "available on request";
+    let willDeliver = post.willDeliver ? "yes" : "no";
+    if (title.includes(text.toLowerCase())) return true;
+    if (price.includes(text.toLowerCase())) return true;
+    if (description.includes(text.toLowerCase())) return true;
+    if (location.includes("request")) {
+      location = "available on request";
+    }
+    if (location.includes(text.toLowerCase())) return true;
+    if (willDeliver.includes(text.toLowerCase())) return true;
+    else return false;
+  }
 
-  // useEffect(() => {
-  //   postList.map((post) => {
-  //     return (
-  //       <div>
-  //         <Post
-  //           key={post.id}
-  //           token={token}
-  //           post={post}
-  //           postList={postList}
-  //           setPostList={setPostList}
-  //         />
-  //       </div>
-  //     );
-  //   });
-  // }, []);
+  function filterPosts(postList, searchTerm) {
+    const result = postList.filter((post) => checkPost(post, searchTerm));
+    console.log("SearchResult: ", result);
+    setFilteredPosts(result);
+    console.log("filtered: ", filteredPosts);
+  }
 
   return (
     <div>
       <CreatePost postList={postList} setPostList={setPostList} token={token} />
-      {postList.map((post) => {
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          filterPosts(postList, searchTerm);
+        }}
+      >
+        <input
+          placeholder="Search"
+          value={searchTerm}
+          required={false}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button type="submit">Submit</button>
+      </form>
+      {postsToDisplay.map((post) => {
         return (
           <div>
             <Post
