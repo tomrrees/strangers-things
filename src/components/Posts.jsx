@@ -48,7 +48,7 @@ export default function Posts({ token, postList, setPostList }) {
 
   return (
     <div>
-      <CreatePost postList={postList} setPostList={setPostList} token={token} />
+      {/* <CreatePost postList={postList} setPostList={setPostList} token={token} /> */}
       <form
         onSubmit={(e) => {
           e.preventDefault();

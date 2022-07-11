@@ -15,6 +15,7 @@ export default function SendMessage({ token, post }) {
 
           if (result.success) {
             alert("Message was posted successfully.");
+            setMessage("");
           }
           return result;
         }}

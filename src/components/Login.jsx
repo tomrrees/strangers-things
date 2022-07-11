@@ -7,10 +7,6 @@ export default function Login({ setToken }) {
   const [password, setPassword] = useState("");
   let navigate = useNavigate();
 
-  // function logOut() {
-  //   localStorage.setItem("token", null);
-  // }
-
   return (
     <div>
       <form
@@ -22,8 +18,8 @@ export default function Login({ setToken }) {
           } else {
             setToken(result.data.token);
             localStorage.setItem("token", result.data.token);
-            alert(result.data.message);
             navigate("/");
+            alert(result.data.message);
           }
         }}
       >

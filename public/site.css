@@ -13,3 +13,19 @@
   color: black;
   font-size: 20px;
 }
+
+.navbar a:hover {
+  color: red;
+}
+
+.header-format {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: aqua;
+}
+
+h3 {
+  color: crimson;
+}

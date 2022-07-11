@@ -28,6 +28,13 @@ export default function CreatePost({ token, postList, setPostList }) {
         const newList = postList.concat(newPost);
 
         setPostList(newList);
+
+        //clear fields
+        setTitle("");
+        setDescription("");
+        setPrice("");
+        setLocation("");
+        setWillDeliver("");
       }}
     >
       <input
