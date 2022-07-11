@@ -42,6 +42,5 @@ export const fetchMe = async (token) => {
     },
   });
   const result = await response.json();
-  console.log("Me from user:", result);
   return result;
 };

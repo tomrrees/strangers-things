@@ -12,7 +12,6 @@ export default function Post({ token, post, postList, setPostList }) {
         <li>Price: {post.price}</li>
         <li>Description: {post.description}</li>
         <li>
-          {/* Location: {post.location} */}
           Location:{" "}
           {post.location === "[On Request]"
             ? "Available upon request."

@@ -16,10 +16,8 @@ export default function Register({ setToken }) {
           if (password === confirmPassword && password.length >= 8) {
             const result = await createUser(userName, password);
             if (result.success) {
-              console.log(result.data);
               setToken(result.data.token);
               localStorage.setItem("token", result.data.token);
-              console.log(result.data.token);
               alert("Account created");
               navigate("/login");
             } else {

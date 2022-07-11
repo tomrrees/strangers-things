@@ -1,5 +1,6 @@
 import { createPost } from "api/post";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CreatePost({ token, postList, setPostList }) {
   const [title, setTitle] = useState("");
@@ -7,6 +8,7 @@ export default function CreatePost({ token, postList, setPostList }) {
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState(null);
   const [willDeliver, setWillDeliver] = useState(null);
+  let navigate = useNavigate();
 
   return (
     <form
@@ -35,6 +37,7 @@ export default function CreatePost({ token, postList, setPostList }) {
         setPrice("");
         setLocation("");
         setWillDeliver("");
+        navigate("/profile");
       }}
     >
       <input

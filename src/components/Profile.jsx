@@ -40,12 +40,6 @@ export default function Profile({ token, postList, setPostList }) {
           );
         })}
       </div>
-
-      {/* <div>
-        {messages.map((message) => {
-          return <div>{message.content}</div>;
-        })}
-      </div> */}
     </div>
   );
 }

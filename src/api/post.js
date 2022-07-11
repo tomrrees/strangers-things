@@ -10,7 +10,6 @@ export const fetchAllPosts = async (token) => {
   });
 
   const result = await response.json();
-  console.log(result);
   return result;
 };
 

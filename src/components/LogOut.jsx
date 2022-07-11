@@ -12,7 +12,6 @@ export default function LogOut({
         e.preventDefault();
         localStorage.setItem("token", "");
         let token1 = localStorage.getItem("token");
-        console.log("Local Storage Token: ", token1);
         const tempUser = {};
         const tempToken = "";
         setCurrentUser(tempUser);
@@ -22,7 +21,6 @@ export default function LogOut({
           localStorage.getItem("token") === "" &&
           Object.keys(currentUser).length < 1
         ) {
-          console.log("logging out");
           alert("Successfully logged out");
         }
       }}
