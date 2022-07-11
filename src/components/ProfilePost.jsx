@@ -20,8 +20,8 @@ export default function Post({ token, post, postList, setPostList }) {
         </li>
         <li>Will Deliver: {post.willDeliver ? "Yes" : "No"}</li>
       </ul>
-      {/* {post.isAuthor ? <Messages token={token} post={post} /> : null}
-      {post.isAuthor ? (
+      {!post.isAuthor ? <Messages token={token} post={post} /> : null}
+      {!post.isAuthor ? (
         <DeletePost
           token={token}
           post={post}
@@ -29,16 +29,16 @@ export default function Post({ token, post, postList, setPostList }) {
           setPostList={setPostList}
         />
       ) : null}
-      {post.isAuthor ? (
+      {!post.isAuthor ? (
         <EditPost
           token={token}
           post={post}
           postList={postList}
           setPostList={setPostList}
         />
-      ) : null} */}
+      ) : null}
 
-      {!post.isAuthor ? <SendMessage token={token} post={post} /> : null}
+      {post.isAuthor ? <SendMessage token={token} post={post} /> : null}
     </div>
   );
 }

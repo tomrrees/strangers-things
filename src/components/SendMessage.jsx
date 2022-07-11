@@ -12,10 +12,9 @@ export default function SendMessage({ token, post }) {
           e.preventDefault();
 
           const result = await sendMessage(token, message, id);
-          //   const currentMessage = await result.json();
-          //   console.log("result of message:", result);
+
           if (result.success) {
-            alert(result);
+            alert("Message was posted successfully.");
           }
           return result;
         }}

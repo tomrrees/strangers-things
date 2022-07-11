@@ -12,14 +12,8 @@ export const createUser = async (username, password) => {
         password,
       },
     }),
-  })
-    // .then((response) => response.json())
-    // .then((result) => {
-    //   console.log(result);
-    // })
-    .catch(console.error);
+  }).catch(console.error);
   const result = await response.json();
-  // console.log(result);
   return result;
 };
 
@@ -35,14 +29,8 @@ export const loginUser = async (username, password) => {
         password,
       },
     }),
-  })
-    // .then((response) => response.json())
-    // .then((result) => {
-    //   console.log(result);
-    // })
-    .catch(console.error);
+  }).catch(console.error);
   const result = await response.json();
-  // console.log("result of login:", result);
   return result;
 };
 
@@ -54,5 +42,6 @@ export const fetchMe = async (token) => {
     },
   });
   const result = await response.json();
+  console.log("Me from user:", result);
   return result;
 };

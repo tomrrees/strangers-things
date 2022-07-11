@@ -25,8 +25,6 @@ export default function CreatePost({ token, postList, setPostList }) {
         if (!token) alert("You must be logged in to create a post!");
 
         const newPost = [result.data.post];
-        // console.log("new post:", newPost);
-        // console.log("post list:", postList);
         const newList = postList.concat(newPost);
 
         setPostList(newList);

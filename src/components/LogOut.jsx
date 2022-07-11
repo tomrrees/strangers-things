@@ -6,16 +6,13 @@ export default function LogOut({
   token,
   currentUser,
 }) {
-  // return <div onClick={() =>{
-  //   console.log("logging out");
-  //   localStorage.setItem("token", "")}>Log Out</div>
-
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        console.log("logging out");
         localStorage.setItem("token", "");
+        let token1 = localStorage.getItem("token");
+        console.log("Local Storage Token: ", token1);
         const tempUser = {};
         const tempToken = "";
         setCurrentUser(tempUser);
@@ -25,6 +22,7 @@ export default function LogOut({
           localStorage.getItem("token") === "" &&
           Object.keys(currentUser).length < 1
         ) {
+          console.log("logging out");
           alert("Successfully logged out");
         }
       }}

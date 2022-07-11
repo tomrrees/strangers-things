@@ -2,19 +2,7 @@ import React from "react";
 
 export default function Messages({ token, post }) {
   const messageList = post.messages;
-
-  console.log(messageList);
-
-  function displayMessageList() {
-    if (messageList.length > 0) {
-      messageList.map((message) => {
-        return <li>{message}</li>;
-      });
-    } else {
-      return <li>No messages</li>;
-    }
-    console.log(messageList);
-  }
+  let concerning = post.title;
 
   return (
     <div>
@@ -22,7 +10,11 @@ export default function Messages({ token, post }) {
       <ul>
         {messageList.length > 0 ? (
           messageList.map((message) => {
-            return <li>{message.content}</li>;
+            return (
+              <li>
+                Message for post of {concerning}: {message.content}
+              </li>
+            );
           })
         ) : (
           <li>No messages</li>

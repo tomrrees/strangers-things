@@ -31,15 +31,6 @@ export default function App() {
     }
   }, [token]);
 
-  // useEffect(() => {
-  //   console.log("token = ", token);
-  //   setToken("");
-  //   console.log("token = ", token);
-  //   console.log("user = ", currentUser);
-  //   setCurrentUser({});
-  //   console.log("user = ", currentUser);
-  // }, [localStorageToken]);
-
   return (
     <div>
       <NavBar />
@@ -92,5 +83,3 @@ export default function App() {
     </div>
   );
 }
-
-//Test of push on Sun Jul 10 1:18pm mdt

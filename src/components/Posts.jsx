@@ -15,8 +15,6 @@ export default function Posts({ token, postList, setPostList }) {
       const results = await fetchAllPosts(token);
       setPostList(results.data.posts);
       setPostsToDisplay(searchTerm.length > 0 ? filteredPosts : postList);
-      //setPostsToDisplay(postList);
-      console.log(postsToDisplay);
     };
     getAllPosts();
   }, [filteredPosts]);
@@ -44,7 +42,6 @@ export default function Posts({ token, postList, setPostList }) {
 
   function filterPosts(postList, searchTerm) {
     const result = postList.filter((post) => checkPost(post, searchTerm));
-    console.log("SearchResult: ", result);
     setFilteredPosts(result);
     console.log("filtered: ", filteredPosts);
   }

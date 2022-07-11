@@ -7,9 +7,9 @@ export default function Login({ setToken }) {
   const [password, setPassword] = useState("");
   let navigate = useNavigate();
 
-  function logOut() {
-    localStorage.setItem("token", null);
-  }
+  // function logOut() {
+  //   localStorage.setItem("token", null);
+  // }
 
   return (
     <div>
@@ -17,7 +17,6 @@ export default function Login({ setToken }) {
         onSubmit={async (e) => {
           e.preventDefault();
           const result = await loginUser(userName, password);
-          // console.log(result.data);
           if (result.success === false) {
             alert(result.error.message);
           } else {
@@ -26,7 +25,6 @@ export default function Login({ setToken }) {
             alert(result.data.message);
             navigate("/");
           }
-          // console.log(result.data.token);
         }}
       >
         <input

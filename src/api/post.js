@@ -10,6 +10,7 @@ export const fetchAllPosts = async (token) => {
   });
 
   const result = await response.json();
+  console.log(result);
   return result;
 };
 
@@ -24,10 +25,6 @@ export const createPost = async (
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
-      // user: {
-      //   username,
-      //   password,
-      // },
       post: {
         title,
         description,
@@ -36,14 +33,9 @@ export const createPost = async (
         willDeliver,
       },
     }),
-  })
-    // .then((response) => response.json())
-    // .then((result) => {
-    //   console.log(result);
-    // })
-    .catch(console.error);
+  }).catch(console.error);
   const result = await response.json();
-  // console.log(result);
+
   return result;
 };
 
@@ -55,15 +47,9 @@ export const deletePost = async (token, post) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  })
-    // .then((response) => response.json())
-    // .then((result) => {
-    //   console.log(result);
-    //   return result;
-    // })
-    .catch(console.error);
+  }).catch(console.error);
   const result = await response.json();
-  // console.log(result);
+
   return result;
 };
 
@@ -88,7 +74,7 @@ export const editPost = async (
     }),
   }).catch(console.error);
   const result = await response.json();
-  // console.log(result);
+
   return result;
 };
 
@@ -106,6 +92,6 @@ export const sendMessage = async (token, content, id) => {
     }),
   }).catch(console.error);
   const result = await response.json();
-  // console.log(result);
+
   return result;
 };
